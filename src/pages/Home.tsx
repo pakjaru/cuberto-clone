@@ -3,5 +3,9 @@ import { FC } from "react"
 import { HomeBanner } from "../components"
 
 export const HomePage: FC = () => {
-	return <HomeBanner />
+	return (
+		<main>
+			<HomeBanner />
+		</main>
+	)
 }

@@ -1,5 +1,11 @@
 import { FC } from "react"
 
+import { HomeBanner } from "../components"
+
 export const HomePage: FC = () => {
-	return <h1>Home Page</h1>
+	return (
+		<main>
+			<HomeBanner />
+		</main>
+	)
 }

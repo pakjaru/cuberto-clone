@@ -1,0 +1,14 @@
+.vscode/*
+public/*
+.editorconfig
+.eslintignore
+.eslintrc.cjs
+.gitignore
+index.html
+package.json
+README.md
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+package-lock.json
+yarn.lock

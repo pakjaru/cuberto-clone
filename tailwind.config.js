@@ -3,8 +3,15 @@ export default {
 	content: ["./src/**/*.{ts,tsx}", "index.html"],
 	theme: {
 		extend: {
+			backgroundImage: {
+				preLoaderGradient: "linear-gradient(0deg, rgba(255,255,255,1) 50%, rgba(24,29,25,1) 100%)",
+			},
 			backgroundColor: {
 				dark: "#121212",
+				preLoader: "#181d19",
+			},
+			borderColor: {
+				preLoader: "#3f423e",
 			},
 			colors: {
 				tetriary: "#e0fd60",

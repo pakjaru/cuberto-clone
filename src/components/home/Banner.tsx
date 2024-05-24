@@ -1,5 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react"
 
+import { progressPercentage } from "@utils"
+
 const DEFAULT_VALUES = {
 	opacity: 1,
 	position: 0,
@@ -20,21 +22,20 @@ export const HomeBanner: FC = () => {
 	const handleScroll = () => {
 		if (!elRef.current) return
 
+		const _opacity = progressPercentage({
+			value: window.scrollY,
+			maxValue: elRef.current.clientHeight,
+			maxPercentage: DEFAULT_VALUES.maxPosition,
+		})
+		const _maxWidth = progressPercentage({
+			value: window.scrollY,
+			maxValue: elRef.current.clientHeight,
+			minPercentage: DEFAULT_VALUES.width,
+		})
+
 		setOpacity(DEFAULT_VALUES.opacity - Math.min(window.scrollY / 110, DEFAULT_VALUES.opacity))
-		setPosition(
-			Math.min(
-				(window.scrollY * DEFAULT_VALUES.maxPosition) / (elRef.current?.clientHeight - window.scrollY),
-				DEFAULT_VALUES.maxPosition,
-			),
-		)
-		setMaxWidth(
-			Math.min(
-				(window.scrollY * (DEFAULT_VALUES.maxWidth - DEFAULT_VALUES.width)) /
-					(elRef.current?.clientHeight - window.scrollY) +
-					DEFAULT_VALUES.width,
-				DEFAULT_VALUES.maxWidth,
-			),
-		)
+		setPosition(Math.min(_opacity, DEFAULT_VALUES.maxPosition))
+		setMaxWidth(Math.min(_maxWidth, DEFAULT_VALUES.maxWidth))
 	}
 
 	useEffect(() => {
